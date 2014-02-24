@@ -1,7 +1,7 @@
-package Gameboard;
+package gameboard;
 
-import Image.Database;
-import Image.Deck;
+import image.Database;
+import image.Deck;
 
 public class GameBoard {
 	private Deck deck;

@@ -1,12 +1,12 @@
-package Launcher;
+package launcher;
 
-import View.Menu;
+import view.Frame;
 
 public class Main {
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new Menu();
+		new Frame("Qui suis-je ?");
 	}
 }

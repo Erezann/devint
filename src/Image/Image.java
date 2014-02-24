@@ -1,10 +1,10 @@
-package Image;
+package image;
 
-import Characteristics.Age;
-import Characteristics.Beard;
-import Characteristics.EyesColor;
-import Characteristics.HairColor;
-import Characteristics.Sexe;
+import characteristics.Age;
+import characteristics.Beard;
+import characteristics.EyesColor;
+import characteristics.HairColor;
+import characteristics.Sexe;
 
 public class Image {
 	private int id;

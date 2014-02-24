@@ -1,4 +1,4 @@
-package Characteristics;
+package characteristics;
 
 /**
  * Enumeration Age

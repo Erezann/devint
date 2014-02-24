@@ -1,11 +1,15 @@
-package Image;
+package image;
+
+import gameboard.Level;
 
 import java.util.ArrayList;
 
-import Config.Config;
-import Gameboard.Level;
-import Manager.Manager;
-import Serialization.Data;
+import serialization.Data;
+
+import manager.Manager;
+
+import config.Config;
+
 
 public class Database {
 	private ArrayList<Image> database;

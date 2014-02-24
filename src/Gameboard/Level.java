@@ -1,6 +1,6 @@
-package Gameboard;
+package gameboard;
 
-import Config.Config;
+import config.Config;
 
 public enum Level {
 	
