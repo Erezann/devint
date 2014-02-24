@@ -1,5 +1,6 @@
 package launcher;
 
+import controller.Controller;
 import view.Frame;
 
 public class Main {
@@ -7,6 +8,6 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new Frame("Qui suis-je ?");
+		new Controller();
 	}
 }

@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -33,7 +32,9 @@ public class Frame extends JFrame {
 		this.setHeader(new JLabel(this.getTitle(), JLabel.CENTER));
 		this.getHeader().setPreferredSize(
 				new Dimension((int) screenSize.getWidth() - Config.FONT_SIZE_HEADER / 4, Config.FONT_SIZE_HEADER * 2));
-		this.getHeader().setFont(new Font(Config.FONT_HEADER, Font.BOLD, Config.FONT_SIZE_HEADER));
+		Font font = new Font(Config.FONT_HEADER, Font.BOLD, Config.FONT_SIZE_HEADER);
+		this.getHeader().setFont(font);
+		this.getHeader().setForeground(Config.FONT_COLOR_HEADER);
 		this.getContentPane().add(this.getHeader(), BorderLayout.NORTH);
 	}
 
