@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Deck {
 	private ArrayList<Image> deck;
-		
+
 	public Deck(){
 		this.setDeck(new ArrayList<Image>());
 	}

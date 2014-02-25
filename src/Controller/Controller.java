@@ -4,8 +4,8 @@ import view.Menu;
 
 public class Controller {
 	private Menu menu;
-	
-	public Controller(){
+
+	public Controller() {
 		this.setMenu(new Menu());
 	}
 
@@ -17,7 +17,8 @@ public class Controller {
 	}
 
 	/**
-	 * @param menu the menu to set
+	 * @param menu
+	 *            the menu to set
 	 */
 	public void setMenu(Menu menu) {
 		this.menu = menu;

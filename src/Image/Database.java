@@ -10,21 +10,20 @@ import manager.Manager;
 
 import config.Config;
 
-
 public class Database {
 	private ArrayList<Image> database;
-	
-	public Database(){
-		try{
+
+	public Database() {
+		try {
 			this.setDatabase(this.deserialize().getDatabase());
-		}catch(Exception e){
+		} catch (Exception e) {
 			this.setDatabase(new ArrayList<Image>());
 		}
 	}
-	
+
 	public void blend() {
 		int n1, n2, size = this.getDatabase().size();
-		for(int i = 0; i < Config.NUMBER_BLEND_DECK; i++){
+		for (int i = 0; i < Config.NUMBER_BLEND_DECK; i++) {
 			n1 = Manager.random(0, size);
 			n2 = Manager.random(0, size);
 			Image temp = this.getDatabase().get(n1);
@@ -32,24 +31,24 @@ public class Database {
 			this.getDatabase().set(n2, temp);
 		}
 	}
-	
-	public void add(Image image){
+
+	public void add(Image image) {
 		this.getDatabase().add(image);
 	}
-	
-	public Image get(int index){
+
+	public Image get(int index) {
 		return this.getDatabase().get(index);
 	}
-	
-	public void set(int index, Image image){
+
+	public void set(int index, Image image) {
 		this.getDatabase().set(index, image);
 	}
-	
-	public void serialize(){
+
+	public void serialize() {
 		Data.store(this, "deck");
 	}
-	
-	public Database deserialize(){
+
+	public Database deserialize() {
 		return (Database) Data.load("deck");
 	}
 
@@ -61,10 +60,11 @@ public class Database {
 	}
 
 	/**
-	 * @param database the database to set
+	 * @param database
+	 *            the database to set
 	 */
 	public void setDatabase(ArrayList<Image> database) {
 		this.database = database;
 	}
-	
+
 }

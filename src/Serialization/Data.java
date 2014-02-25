@@ -1,6 +1,5 @@
 package serialization;
 
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.io.ObjectOutputStream;
  */
 abstract public class Data {
 	static final long serialVersionUID = 20223210300L;
-	
+
 	public static boolean store(Object data, String name) {
 		FileOutputStream file = null;
 		ObjectOutputStream out = null;
@@ -63,7 +62,7 @@ abstract public class Data {
 		} catch (Exception e) {
 			return null;
 		}
-		
+
 		try {
 			res = in.readObject();
 		} catch (Exception e) {
