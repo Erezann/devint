@@ -15,7 +15,7 @@ import config.Config;
 
 public class Difficulty extends Frame {
 	private JPanel panel;
-	private JButton easy, medium, hard;
+	private Button easy, medium, hard;
 
 	public Difficulty() {
 		super(Config.DIFFICULTY);
@@ -25,28 +25,14 @@ public class Difficulty extends Frame {
 
 	private void init() {
 		this.setPanel(new JPanel());
-		this.setEasy(new JButton(Level.EASY.toString()));
-		this.setMedium(new JButton(Level.MEDIUM.toString()));
-		this.setHard(new JButton(Level.HARD.toString()));
-
-		Font font = new Font(Config.FONT_BUTTON, Font.CENTER_BASELINE,
-				Config.FONT_SIZE_BUTTON);
-		this.getEasy().setFont(font);
-		this.getMedium().setFont(font);
-		this.getHard().setFont(font);
-
-		Dimension dimension = new Dimension(100, 40);
-		this.getEasy().setSize(dimension);
-		this.getMedium().setSize(dimension);
-		this.getHard().setSize(dimension);
-
-		this.getEasy().setForeground(Config.FONT_COLOR_BUTTON);
-		this.getMedium().setForeground(Config.FONT_COLOR_BUTTON);
-		this.getHard().setForeground(Config.FONT_COLOR_BUTTON);
-
+		this.setEasy(new Button(Config.EASY));
+		this.setMedium(new Button(Config.MEDIUM));
+		this.setHard(new Button(Config.HARD));
+		
 		this.getPanel().add(this.getEasy());
 		this.getPanel().add(this.getMedium());
 		this.getPanel().add(this.getHard());
+		
 		this.getContentPane().add(this.getPanel(), BorderLayout.CENTER);
 	}
 
@@ -83,7 +69,7 @@ public class Difficulty extends Frame {
 	/**
 	 * @return the easy
 	 */
-	public JButton getEasy() {
+	public Button getEasy() {
 		return easy;
 	}
 
@@ -91,14 +77,14 @@ public class Difficulty extends Frame {
 	 * @param easy
 	 *            the easy to set
 	 */
-	public void setEasy(JButton easy) {
+	public void setEasy(Button easy) {
 		this.easy = easy;
 	}
 
 	/**
 	 * @return the medium
 	 */
-	public JButton getMedium() {
+	public Button getMedium() {
 		return medium;
 	}
 
@@ -106,14 +92,14 @@ public class Difficulty extends Frame {
 	 * @param medium
 	 *            the medium to set
 	 */
-	public void setMedium(JButton medium) {
+	public void setMedium(Button medium) {
 		this.medium = medium;
 	}
 
 	/**
 	 * @return the hard
 	 */
-	public JButton getHard() {
+	public Button getHard() {
 		return hard;
 	}
 
@@ -121,7 +107,7 @@ public class Difficulty extends Frame {
 	 * @param hard
 	 *            the hard to set
 	 */
-	public void setHard(JButton hard) {
+	public void setHard(Button hard) {
 		this.hard = hard;
 	}
 

@@ -14,7 +14,7 @@ import config.Config;
 
 public class Frame extends JFrame {
 	private JLabel header;
-	private JButton regress;
+	private Button regress;
 
 	public Frame(String title) {
 		super();
@@ -50,12 +50,8 @@ public class Frame extends JFrame {
 	}
 	
 	private void initButton(Dimension screenSize){
-		this.setRegress(new JButton(Config.REGRESS));
-		this.getRegress().setPreferredSize(
-				new Dimension((int) screenSize.getWidth() - Config.FONT_SIZE_HEADER / 4, Config.FONT_SIZE_HEADER * 2));
-		Font font = new Font(Config.FONT_HEADER, Font.BOLD, Config.FONT_SIZE_HEADER);
-		this.getRegress().setFont(font);
-		this.getRegress().setForeground(Config.FONT_COLOR_HEADER);
+		this.setRegress(new Button(Config.REGRESS));
+		
 		this.getRegress().addActionListener(new ActionListener() {
 			
 			@Override
@@ -64,6 +60,7 @@ public class Frame extends JFrame {
 				new Menu();
 			}
 		});
+		
 		this.getContentPane().add(this.getRegress(), BorderLayout.SOUTH);
 	}
 	
@@ -86,14 +83,14 @@ public class Frame extends JFrame {
 	/**
 	 * @return the regress
 	 */
-	public JButton getRegress() {
+	public Button getRegress() {
 		return regress;
 	}
 
 	/**
 	 * @param regress the regress to set
 	 */
-	public void setRegress(JButton regress) {
+	public void setRegress(Button regress) {
 		this.regress = regress;
 	}
 }
