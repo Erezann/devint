@@ -1,0 +1,28 @@
+mamifère sans poil:
+	 4 pattes
+	 pas de poil	 
+
+élephant : -trompe
+	   -grand
+	   -herbivore
+
+
+hérisson : -piques
+	   -herbivore
+	   -petit
+
+hippopotame : -vit près de l'eau
+	      -herbivore
+	      -grand
+
+mouton : -laine
+       	 -herbivore
+	 -taille moyenne
+
+rhinocéros : -corne
+	     -herbivore
+	     -grand
+
+tatou : -carapace
+      	-herbivore
+	-petit

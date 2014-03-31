@@ -1,20 +1,18 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 import config.Config;
 
 public class Menu extends Frame {
-	private JPanel panel;
-	private JButton newGame, resume, option, leave;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Button newGame, resume, option, leave;
 
 	public Menu() {
 		super(Config.QSJ);
@@ -24,41 +22,22 @@ public class Menu extends Frame {
 	}
 
 	private void initButton() {
-		this.setNewGame(new JButton(Config.NEW_GAME));
-		this.setResume(new JButton(Config.RESUME));
-		this.setOption(new JButton(Config.OPTION));
-		this.setLeave(new JButton(Config.LEAVE));
+		this.newGame = new Button(Config.NEW_GAME);
+		this.resume = new Button(Config.RESUME);
+		this.option = new Button(Config.OPTION);
+		this.leave = new Button(Config.LEAVE);
 
-		Font font = new Font(Config.FONT_BUTTON, Font.CENTER_BASELINE,
-				Config.FONT_SIZE_BUTTON);
-		this.getNewGame().setFont(font);
-		this.getResume().setFont(font);
-		this.getOption().setFont(font);
-		this.getLeave().setFont(font);
+		this.getBody().setLayout(new GridLayout(4, 1));
+		this.getBody().add(this.getNewGame());
+		this.getBody().add(this.getResume());
+		this.getBody().add(this.getOption());
+		this.getBody().add(this.getLeave());
 
-		Dimension dimension = new Dimension(100, 40);
-		this.getNewGame().setSize(dimension);
-		this.getResume().setSize(dimension);
-		this.getOption().setSize(dimension);
-		this.getLeave().setSize(dimension);
-
-		this.getNewGame().setForeground(Config.FONT_COLOR_BUTTON);
-		this.getResume().setForeground(Config.FONT_COLOR_BUTTON);
-		this.getOption().setForeground(Config.FONT_COLOR_BUTTON);
-		this.getLeave().setForeground(Config.FONT_COLOR_BUTTON);
-
-		this.setPanel(new JPanel());
-		this.getPanel().setLayout(new GridLayout(4, 1));
-		this.getPanel().add(this.getNewGame());
-		this.getPanel().add(this.getResume());
-		this.getPanel().add(this.getOption());
-		this.getPanel().add(this.getLeave());
-
-		this.getContentPane().add(this.getPanel(), BorderLayout.CENTER);
+		this.getContentPane().add(this.getBody(), BorderLayout.CENTER);
 	}
 
 	private void setListeners() {
-		this.getNewGame().addActionListener(new ActionListener() {
+		this.newGame.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -67,7 +46,7 @@ public class Menu extends Frame {
 			}
 		});
 
-		this.getResume().addActionListener(new ActionListener() {
+		this.resume.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -76,7 +55,7 @@ public class Menu extends Frame {
 			}
 		});
 
-		this.getOption().addActionListener(new ActionListener() {
+		this.option.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -85,7 +64,7 @@ public class Menu extends Frame {
 			}
 		});
 
-		this.getLeave().addActionListener(new ActionListener() {
+		this.leave.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -95,24 +74,9 @@ public class Menu extends Frame {
 	}
 
 	/**
-	 * @return the panel
-	 */
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	/**
-	 * @param panel
-	 *            the panel to set
-	 */
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
-	}
-
-	/**
 	 * @return the newGame
 	 */
-	public JButton getNewGame() {
+	public Button getNewGame() {
 		return newGame;
 	}
 
@@ -120,14 +84,14 @@ public class Menu extends Frame {
 	 * @param newGame
 	 *            the newGame to set
 	 */
-	public void setNewGame(JButton newGame) {
+	public void setNewGame(Button newGame) {
 		this.newGame = newGame;
 	}
 
 	/**
 	 * @return the resume
 	 */
-	public JButton getResume() {
+	public Button getResume() {
 		return resume;
 	}
 
@@ -135,14 +99,14 @@ public class Menu extends Frame {
 	 * @param resume
 	 *            the resume to set
 	 */
-	public void setResume(JButton resume) {
+	public void setResume(Button resume) {
 		this.resume = resume;
 	}
 
 	/**
 	 * @return the option
 	 */
-	public JButton getOption() {
+	public Button getOption() {
 		return option;
 	}
 
@@ -150,14 +114,14 @@ public class Menu extends Frame {
 	 * @param option
 	 *            the option to set
 	 */
-	public void setOption(JButton option) {
+	public void setOption(Button option) {
 		this.option = option;
 	}
 
 	/**
 	 * @return the leave
 	 */
-	public JButton getLeave() {
+	public Button getLeave() {
 		return leave;
 	}
 
@@ -165,7 +129,7 @@ public class Menu extends Frame {
 	 * @param leave
 	 *            the leave to set
 	 */
-	public void setLeave(JButton leave) {
+	public void setLeave(Button leave) {
 		this.leave = leave;
 	}
 }

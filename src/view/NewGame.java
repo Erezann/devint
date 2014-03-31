@@ -8,18 +8,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import config.Config;
 
 public class NewGame extends Frame {
-	private JPanel panel;
+	private static final long serialVersionUID = 1L;
 	private JLabel label;
 	private JTextField enterName;
-	private JButton newPlayer;
+	private Button newPlayer;
 
 	public NewGame() {
 		super(Config.NEW_GAME);
@@ -28,29 +26,24 @@ public class NewGame extends Frame {
 	}
 
 	private void init() {
-		this.setPanel(new JPanel());
-		this.setLabel(new JLabel(
-				"Entre ton prénom si t'as déja joué puis appuies sur la touche Entrée :"));
-		this.setEnterName(new JTextField("Prénom"));
-		this.setNewPlayer(new JButton("Ajouter un nouvel utilisateur"));
-
-		Font font = new Font(Config.FONT_BUTTON, Font.CENTER_BASELINE,
-				Config.FONT_SIZE_BUTTON);
-		this.getNewPlayer().setFont(font);
+		this.label = new JLabel(
+				"Entre ton prénom si t'as déja joué puis appuies sur la touche Entrée :");
+		this.enterName = new JTextField("Prénom");
+		this.newPlayer = new Button("Ajouter un nouvel utilisateur");
 
 		Font font2 = new Font(Config.FONT_TEXT, Font.BOLD,
 				Config.FONT_SIZE_TEXT);
-		this.getLabel().setFont(font2);
-		this.getEnterName().setFont(font2);
+		this.label.setFont(font2);
+		this.enterName.setFont(font2);
 
-		this.getPanel().add(this.getLabel());
-		this.getPanel().add(this.getEnterName());
-		this.getPanel().add(this.getNewPlayer());
-		this.getContentPane().add(this.getPanel(), BorderLayout.CENTER);
+		this.getBody().add(this.label);
+		this.getBody().add(this.enterName);
+		this.getBody().add(this.newPlayer);
+		this.getContentPane().add(this.getBody(), BorderLayout.CENTER);
 	}
 
 	private void setListeners() {
-		this.getEnterName().addKeyListener(new KeyListener() {
+		this.enterName.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
@@ -70,7 +63,7 @@ public class NewGame extends Frame {
 			}
 		});
 
-		this.getNewPlayer().addActionListener(new ActionListener() {
+		this.newPlayer.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -111,24 +104,9 @@ public class NewGame extends Frame {
 	}
 
 	/**
-	 * @return the panel
-	 */
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	/**
-	 * @param panel
-	 *            the panel to set
-	 */
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
-	}
-
-	/**
 	 * @return the newPlayer
 	 */
-	public JButton getNewPlayer() {
+	public Button getNewPlayer() {
 		return newPlayer;
 	}
 
@@ -136,7 +114,7 @@ public class NewGame extends Frame {
 	 * @param newPlayer
 	 *            the newPlayer to set
 	 */
-	public void setNewPlayer(JButton newPlayer) {
+	public void setNewPlayer(Button newPlayer) {
 		this.newPlayer = newPlayer;
 	}
 

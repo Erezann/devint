@@ -1,7 +1,5 @@
 package gameboard;
 
-import image.Database;
-import image.Deck;
 
 public class GameBoard {
 	private Deck deck;
@@ -9,7 +7,7 @@ public class GameBoard {
 	private Level level;
 
 	public GameBoard(Level level) {
-		this.setDeck(new Deck());
+		this.setDeck(new Deck(level));
 		this.setLevel(level);
 		this.initialize();
 	}

@@ -6,21 +6,25 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import config.Config;
 
 public class Frame extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private JLabel header;
-	private JButton regress;
+	private Button regress;
+	private JPanel body;
 
 	public Frame(String title) {
 		super();
 		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
 		initFrame(title, screenSize);
+		this.body = new JPanel();
+		this.getContentPane().add(this.body, BorderLayout.CENTER);
 	}
 
 	private void initFrame(String title, Dimension screenSize) {
@@ -30,7 +34,7 @@ public class Frame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setUndecorated(true);
-		
+		 
 		initHeader(screenSize);
 		if(!(this instanceof Menu)){
 			initButton(screenSize);
@@ -40,23 +44,19 @@ public class Frame extends JFrame {
 	}
 
 	private void initHeader(Dimension screenSize) {
-		this.setHeader(new JLabel(this.getTitle(), JLabel.CENTER));
-		this.getHeader().setPreferredSize(
+		this.header = new JLabel(this.getTitle(), JLabel.CENTER);
+		this.header.setPreferredSize(
 				new Dimension((int) screenSize.getWidth() - Config.FONT_SIZE_HEADER / 4, Config.FONT_SIZE_HEADER * 2));
 		Font font = new Font(Config.FONT_HEADER, Font.BOLD, Config.FONT_SIZE_HEADER);
-		this.getHeader().setFont(font);
-		this.getHeader().setForeground(Config.FONT_COLOR_HEADER);
-		this.getContentPane().add(this.getHeader(), BorderLayout.NORTH);
+		this.header.setFont(font);
+		this.header.setForeground(Config.FONT_COLOR_HEADER);
+		this.getContentPane().add(this.header, BorderLayout.NORTH);
 	}
 	
 	private void initButton(Dimension screenSize){
-		this.setRegress(new JButton(Config.REGRESS));
-		this.getRegress().setPreferredSize(
-				new Dimension((int) screenSize.getWidth() - Config.FONT_SIZE_HEADER / 4, Config.FONT_SIZE_HEADER * 2));
-		Font font = new Font(Config.FONT_HEADER, Font.BOLD, Config.FONT_SIZE_HEADER);
-		this.getRegress().setFont(font);
-		this.getRegress().setForeground(Config.FONT_COLOR_HEADER);
-		this.getRegress().addActionListener(new ActionListener() {
+		this.regress = new Button(Config.REGRESS);
+		
+		this.regress.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -64,7 +64,8 @@ public class Frame extends JFrame {
 				new Menu();
 			}
 		});
-		this.getContentPane().add(this.getRegress(), BorderLayout.SOUTH);
+		
+		this.getContentPane().add(this.regress, BorderLayout.SOUTH);
 	}
 	
 
@@ -86,14 +87,28 @@ public class Frame extends JFrame {
 	/**
 	 * @return the regress
 	 */
-	public JButton getRegress() {
+	public Button getRegress() {
 		return regress;
 	}
 
 	/**
 	 * @param regress the regress to set
 	 */
-	public void setRegress(JButton regress) {
+	public void setRegress(Button regress) {
 		this.regress = regress;
+	}
+
+	/**
+	 * @return the body
+	 */
+	public JPanel getBody() {
+		return body;
+	}
+
+	/**
+	 * @param body the body to set
+	 */
+	public void setBody(JPanel body) {
+		this.body = body;
 	}
 }
