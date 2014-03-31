@@ -2,8 +2,6 @@ package config;
 
 import java.awt.Color;
 
-import javax.swing.Icon;
-
 public class Config {
 	public static final int NUMBER_IMAGE_EASY = 4;
 	public static final int NUMBER_IMAGE_MEDIUM = 9;
@@ -34,4 +32,8 @@ public class Config {
 	public static final String EASY = "Facile";
 	public static final String MEDIUM = "Intermédiaire";
 	public static final String HARD = "Difficile";
+	
+	public static final String URL_SRC_IMAGE = "C:/Users/user/Documents/devint/Data/Image/";
+	public static final String URL_SRC_ICON = "C:/Users/user/Documents/devint/Data/Icon/";
 }
+

@@ -1,0 +1,94 @@
+mamifere à poil : -mamifère
+	   	  -poil
+
+bison : -crinière
+      	-corne
+	-grand
+	-herbivores
+
+blaireau : -rayure
+	   -petit
+	   -herbivores
+
+cerf : -bois
+       -grand
+       -herbivores
+    
+chameau : -grand
+	  -bosses
+	  -herbivores
+
+chat : -petit
+       -moustache
+       -habite dans les maisons
+       -carnivore
+
+cheval: -grand
+	-crinière
+	-herbivore
+
+chèvre: -corne
+	-taille moyenne
+	-herbivore
+
+chien: -habite dans les maisons
+       -taille moyenne
+       -carnivore
+
+cochon: -taille moyenne
+	-groin
+	-omnivore
+
+ecurueil : -grimpe aux arbres
+	   -petit
+	   -herbivore
+
+fourmilier : -trompe
+	     -petit
+	     -insectivore
+
+girafe : -long cou
+       	 -très grand
+	 -herbivore
+
+guépard : -taille moyenne
+	  -tache
+	  -carnivore
+
+lion : -crinière 
+       -taille moyenne
+       -carnivore
+
+ours : -grand
+       -omnivore
+
+panda: -tache
+       -grand
+       -herbivore
+
+singe:	-utilise des outils   
+	-taille moyenne
+	-herbivore
+
+souris: -petit
+	-habite dans les maisons
+	-carnivore
+
+tigre: -rayure
+       -taille moyenne
+       -carnivore
+
+vache: -corne
+       -tache
+       -grand
+       -herbivore
+
+yack: -corne
+      -grand
+      -herbivore
+
+zebre: -rayure
+       -grand
+       -herbivore
+
+

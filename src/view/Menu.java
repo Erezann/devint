@@ -1,19 +1,17 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 import config.Config;
 
 public class Menu extends Frame {
-	private JPanel panel;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Button newGame, resume, option, leave;
 
 	public Menu() {
@@ -24,23 +22,22 @@ public class Menu extends Frame {
 	}
 
 	private void initButton() {
-		this.setNewGame(new Button(Config.NEW_GAME));
-		this.setResume(new Button(Config.RESUME));
-		this.setOption(new Button(Config.OPTION));
-		this.setLeave(new Button(Config.LEAVE));
-		this.setPanel(new JPanel());
-		
-		this.getPanel().setLayout(new GridLayout(4, 1));
-		this.getPanel().add(this.getNewGame());
-		this.getPanel().add(this.getResume());
-		this.getPanel().add(this.getOption());
-		this.getPanel().add(this.getLeave());
+		this.newGame = new Button(Config.NEW_GAME);
+		this.resume = new Button(Config.RESUME);
+		this.option = new Button(Config.OPTION);
+		this.leave = new Button(Config.LEAVE);
 
-		this.getContentPane().add(this.getPanel(), BorderLayout.CENTER);
+		this.getBody().setLayout(new GridLayout(4, 1));
+		this.getBody().add(this.getNewGame());
+		this.getBody().add(this.getResume());
+		this.getBody().add(this.getOption());
+		this.getBody().add(this.getLeave());
+
+		this.getContentPane().add(this.getBody(), BorderLayout.CENTER);
 	}
 
 	private void setListeners() {
-		this.getNewGame().addActionListener(new ActionListener() {
+		this.newGame.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -49,7 +46,7 @@ public class Menu extends Frame {
 			}
 		});
 
-		this.getResume().addActionListener(new ActionListener() {
+		this.resume.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -58,7 +55,7 @@ public class Menu extends Frame {
 			}
 		});
 
-		this.getOption().addActionListener(new ActionListener() {
+		this.option.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -67,28 +64,13 @@ public class Menu extends Frame {
 			}
 		});
 
-		this.getLeave().addActionListener(new ActionListener() {
+		this.leave.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(getDefaultCloseOperation());
 			}
 		});
-	}
-
-	/**
-	 * @return the panel
-	 */
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	/**
-	 * @param panel
-	 *            the panel to set
-	 */
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
 	}
 
 	/**

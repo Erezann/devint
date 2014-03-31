@@ -1,24 +1,26 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import gameboard.Level;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import player.Player;
 
 import config.Config;
 
 public class Difficulty extends Frame {
+	private static final long serialVersionUID = 1L;
 	private JPanel panel;
 	private Button easy, medium, hard;
+	private Player player;
 
-	public Difficulty() {
+	public Difficulty(Player player) {
 		super(Config.DIFFICULTY);
+		this.setPlayer(player);
 		init();
 		setListeners();
 	}
@@ -42,7 +44,7 @@ public class Difficulty extends Frame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new Game(Level.EASY);
+				new Controller(Level.EASY, getPlayer());
 			}
 		});
 
@@ -51,7 +53,7 @@ public class Difficulty extends Frame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new Game(Level.MEDIUM);
+				new Controller(Level.MEDIUM, getPlayer());
 			}
 		});
 
@@ -60,7 +62,7 @@ public class Difficulty extends Frame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new Game(Level.HARD);
+				new Controller(Level.HARD, getPlayer());
 			}
 		});
 
@@ -124,6 +126,20 @@ public class Difficulty extends Frame {
 	 */
 	public void setPanel(JPanel panel) {
 		this.panel = panel;
+	}
+
+	/**
+	 * @return the player
+	 */
+	public Player getPlayer() {
+		return player;
+	}
+
+	/**
+	 * @param player the player to set
+	 */
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 }

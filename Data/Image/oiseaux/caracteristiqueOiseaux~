@@ -1,0 +1,28 @@
+oiseaux : -plume
+	  -2 pattes
+
+autruche : long cou, petit bec, ne vole pas
+
+manchot : petit bec, vit pres de l'eau, ne vole pas
+
+mouette : petit bec, vit près de l'eau, vole
+
+pelican : gros bec, vit pres de l'eau, vole
+
+poule : petit bec, ne vole pas
+
+paon : petit bec, vole,grande queue 
+
+toucan : gros bec
+
+ toutes les caractéristiques :
+
+-plumes
+-2 pattes
+-long cou
+-petit bec
+-gros bec
+-vole
+-ne vole pas
+-vit près de l'eau
+-grande queue

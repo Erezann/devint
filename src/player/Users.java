@@ -35,6 +35,7 @@ public class Users {
 		Data.store(this, "users");
 	}
 
+	@SuppressWarnings("unchecked")
 	public ArrayList<Player> deserialize() {
 		return (ArrayList<Player>) Data.load("users");
 	}

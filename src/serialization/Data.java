@@ -38,6 +38,7 @@ abstract public class Data {
 		return true;
 	}
 
+	@SuppressWarnings("resource")
 	public static Object load(String name) {
 		FileInputStream file = null;
 		ObjectInputStream in = null;
