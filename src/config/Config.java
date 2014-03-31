@@ -34,4 +34,9 @@ public class Config {
 	public static final String EASY = "Facile";
 	public static final String MEDIUM = "Intermédiaire";
 	public static final String HARD = "Difficile";
+	public static final String MODIFY = "Modifier un joueur";
+	public static final String DELETE = "Supprimer un joueur";
+	public static final String SEARCH = "Rechercher un joueur";
+	public static final String OUI = "Oui";
+	public static final String NON = "Non";
 }
