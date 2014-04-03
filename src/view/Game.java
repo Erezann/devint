@@ -3,11 +3,13 @@ package view;
 import ia.Ask;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,7 +28,7 @@ public class Game extends Frame {
 	private ArrayList<Photo> listPhotos;
 	private Deck deck;
 	private Player player;
-	private JLabel nom, score, sentence;
+	private JLabel sentence;
 	private JButton enter, toGiveUp, back;
 	private String phrase;
 	private Ask ask;
@@ -48,9 +50,10 @@ public class Game extends Frame {
 			public void actionPerformed(ActionEvent arg0) {
 				for (int i = 0; i < listPhotos.size(); i++) {
 					listPhotos.get(i).setSelected(false);
+					listPhotos.get(i).setIcon(listPhotos.get(i).getDecouvert());
 				}
-				initImages(listPhotos);
-				validate();
+				revalidate();
+				System.out.println(listPhotos.size());
 			}
 		});
 
@@ -58,54 +61,63 @@ public class Game extends Frame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				List<Photo> photos = new ArrayList<>();
+				int cpt = 0;
 				for (int i = 0; i < listPhotos.size(); i++) {
 					if (listPhotos.get(i).isSelected()) {
-						photos.add(listPhotos.get(i));
+						listPhotos.get(i)
+								.setIcon(listPhotos.get(i).getDelete());
+						cpt++;
 					}
 				}
-				initImages(photos);
-				validate();
-			}
-		});
-
-		this.toGiveUp.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				new Game(level, player);
+				if (cpt == listPhotos.size()) {
+					for (int i = 0; i < listPhotos.size(); i++) {
+						listPhotos.get(i).setSelected(false);
+						listPhotos.get(i).setIcon(
+								listPhotos.get(i).getDecouvert());
+					}
+				}
+				if(cpt == listPhotos.size() - 1){
+					for (int i = 0; i < listPhotos.size(); i++) {
+						if(!listPhotos.get(i).isSelected() && listPhotos.get(i).getPicture().getUrl().compareTo(deck.getToFound().getUrl()) == 0){
+							dispose();
+							new Frame("Gagné");
+							break;
+						} else {
+							new Frame("Perdu");
+							dispose();
+							break;
+						}
+					}
+				}
+				revalidate();
 			}
 		});
 	}
 
 	private void init() {
-		this.initInformations();
 		this.initSentence();
 		this.initInteractions();
-
 		this.listPhotos = new ArrayList<>();
-		this.initImages(listPhotos);
+		this.initImages();
 
 		this.getBody().setLayout(new BorderLayout());
 		this.getBody().add(this.sentence, BorderLayout.NORTH);
 		this.getBody().add(this.interactions, BorderLayout.EAST);
 		this.getBody().add(this.images, BorderLayout.CENTER);
-		this.getBody().add(this.informations, BorderLayout.WEST);
 		this.getContentPane().add(this.getBody(), BorderLayout.CENTER);
 	}
 
-	private void initImages(List<Photo> photos) {
+	private void initImages() {
 		this.images = new JPanel();
 		switch (this.level) {
 		case EASY:
-			initEasy(photos);
+			initEasy();
 			break;
 		case MEDIUM:
-			initMedium(photos);
+			initMedium();
 			break;
 		case HARD:
-			initHard(photos);
+			initHard();
 			break;
 		default:
 			break;
@@ -132,37 +144,32 @@ public class Game extends Frame {
 	private void initSentence() {
 		this.phrase = this.ask.getSentence();
 		this.sentence = new JLabel(this.phrase, JLabel.CENTER);
+		Font font = new Font(Config.FONT_SENTENCE, Font.BOLD, Config.FONT_SIZE_SENTENCE);
+		this.sentence.setFont(font);
+		this.sentence.setForeground(Config.FONT_COLOR_SENTENCE);
 	}
 
-	private void initInformations() {
-		this.informations = new JPanel();
-		this.nom = new JLabel("Nom :" + this.player.getName());
-		this.score = new JLabel("Score :" + this.player.getScore());
-
-		this.informations.setLayout(new GridLayout(2, 1));
-		this.informations.add(nom);
-		this.informations.add(score);
-	}
-
-	private void initHard(List<Photo> photos) {
+	private void initHard() {
 		this.images.setLayout(new GridLayout(4, 4));
 		for (int i = 0; i < this.level.getValue(); i++) {
-			this.images.add(new Photo(this.deck.get(i).getUrl(), 0.6));
+			this.images.add(new Photo(this.deck.get(i), 0.6));
+			this.images.add(listPhotos.get(i));
 		}
 	}
 
-	private void initMedium(List<Photo> photos) {
+	private void initMedium() {
 		this.images.setLayout(new GridLayout(3, 3));
 		for (int i = 0; i < this.level.getValue(); i++) {
-			this.images.add(new Photo(this.deck.get(i).getUrl(), 0.8));
+			this.images.add(new Photo(this.deck.get(i), 0.8));
+			this.images.add(listPhotos.get(i));
 		}
 	}
 
-	private void initEasy(List<Photo> photos) {
+	private void initEasy() {
 		this.images.setLayout(new GridLayout(2, 2));
 		for (int i = 0; i < this.level.getValue(); i++) {
-			photos.add(new Photo(this.deck.get(i).getUrl(), 1.2));
-			this.images.add(photos.get(i));
+			this.listPhotos.add(new Photo(this.deck.get(i), 1.2));
+			this.images.add(listPhotos.get(i));
 		}
 	}
 
@@ -224,36 +231,6 @@ public class Game extends Frame {
 	 */
 	public void setPlayer(Player player) {
 		this.player = player;
-	}
-
-	/**
-	 * @return the nom
-	 */
-	public JLabel getNom() {
-		return nom;
-	}
-
-	/**
-	 * @param nom
-	 *            the nom to set
-	 */
-	public void setNom(JLabel nom) {
-		this.nom = nom;
-	}
-
-	/**
-	 * @return the score
-	 */
-	public JLabel getScore() {
-		return score;
-	}
-
-	/**
-	 * @param score
-	 *            the score to set
-	 */
-	public void setScore(JLabel score) {
-		this.score = score;
 	}
 
 	/**

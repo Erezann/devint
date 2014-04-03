@@ -2,21 +2,21 @@ package gameboard;
 
 import groups.Characteristics;
 
-public class Image {
+public class Picture {
 	private int id;
 	private String url, name;
 	private Characteristics characteristics;
 
-	public Image() {
+	public Picture() {
 		this.setUrl("");
 		this.setId(0);
 	}
 
-	public Image(int id, String name, String url) {
+	public Picture(int id, String name, String url) {
 		this(id, name, url, new Characteristics());
 	}
 
-	public Image(int id, String name, String url,
+	public Picture(int id, String name, String url,
 			Characteristics characteristics) {
 		this.setUrl(url);
 		this.setName(name);

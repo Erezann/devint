@@ -4,7 +4,8 @@ package gameboard;
 import java.util.ArrayList;
 
 public class Deck {
-	private ArrayList<Image> deck;
+	private ArrayList<Picture> deck;
+	private Picture toFound;
 	private Database database;
 	private Level level;
 
@@ -12,7 +13,7 @@ public class Deck {
 		this.setLevel(level);
 		this.setDatabase(new Database());
 		this.getDatabase().blend();
-		this.setDeck(new ArrayList<Image>());
+		this.setDeck(new ArrayList<Picture>());
 		try {
 			for (int i = 0; i < this.getLevel().getValue(); i++) {
 				this.getDeck().add(this.getDatabase().get(i));
@@ -20,25 +21,26 @@ public class Deck {
 		} catch (Exception e) {
 
 		}
-
+		this.toFound = this.deck.get((int) Math.random() * (this.deck.size() - 1));
+		System.out.println(toFound.getUrl());
 	}
 
-	public void add(Image image) {
+	public void add(Picture image) {
 		this.getDeck().add(image);
 	}
 
-	public Image get(int index) {
+	public Picture get(int index) {
 		return this.getDeck().get(index);
 	}
 
-	public void set(int index, Image image) {
+	public void set(int index, Picture image) {
 		this.getDeck().set(index, image);
 	}
 
 	/**
 	 * @return the deck
 	 */
-	public ArrayList<Image> getDeck() {
+	public ArrayList<Picture> getDeck() {
 		return deck;
 	}
 
@@ -46,7 +48,7 @@ public class Deck {
 	 * @param deck
 	 *            the deck to set
 	 */
-	public void setDeck(ArrayList<Image> deck) {
+	public void setDeck(ArrayList<Picture> deck) {
 		this.deck = deck;
 	}
 
@@ -78,5 +80,19 @@ public class Deck {
 	 */
 	public void setDatabase(Database database) {
 		this.database = database;
+	}
+
+	/**
+	 * @return the toFound
+	 */
+	public Picture getToFound() {
+		return toFound;
+	}
+
+	/**
+	 * @param toFound the toFound to set
+	 */
+	public void setToFound(Picture toFound) {
+		this.toFound = toFound;
 	}
 }
